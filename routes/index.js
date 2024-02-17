@@ -23,14 +23,14 @@ router.get('/cars', carController.carsDetail);
 router.get('/car', (req, res, next) => res.redirect('/cars'));
 
 // GET request for updating a car
-router.get('/car/update/:id', carController.carUpdate_get);
+router.get('/car/:id/update', carController.carUpdate_get);
 // POST request for updating a car
-router.post('/car/update/:id', carController.carUpdate_post);
+router.post('/car/:id/update', carController.carUpdate_post);
 
 // GET request for deleting a car
-router.get('/car/delete/:id', carController.carDelete_get);
+router.get('/car/:id/delete', carController.carDelete_get);
 // POST request for updating a car
-router.post('/car/delete/:id', carController.carDelete_post);
+router.post('/car/:id/delete', carController.carDelete_post);
 
 
 // CATEGORY ROUTES
@@ -48,13 +48,13 @@ router.get('/categories', categoryController.categoriesDetail);
 router.get('/category', (req, res, next) => res.redirect('/categories'));
 
 // GET request for updating a category
-router.get('/category/update/:id', categoryController.categoryUpdate_get);
+router.get('/category/:id/update', categoryController.categoryUpdate_get);
 // POST request for updating a category
-router.post('/category/update/:id', categoryController.categoryUpdate_post);
+router.post('/category/:id/update', categoryController.categoryUpdate_post);
 
 // GET request for deleting a category
-router.get('/category/delete/:id', categoryController.categoryDelete_get);
+router.get('/category/:id/delete', categoryController.categoryDelete_get);
 // POST request for deleting a category
-router.post('/category/delete/:id', categoryController.categoryDelete_post);
+router.post('/category/:id/delete', categoryController.categoryDelete_post);
 
 module.exports = router;
