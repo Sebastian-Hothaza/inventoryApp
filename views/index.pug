@@ -2,4 +2,14 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #[em Car Inventory], a simple inventory app to track cars.
+
+  h1 Dynamic content
+
+  p The library has the following records counts:
+
+  ul
+    li #[strong Cars:] !{numCars}
+    li #[strong Categories:] !{numCategories}
+
+  a(href='/cars') Go to cars
