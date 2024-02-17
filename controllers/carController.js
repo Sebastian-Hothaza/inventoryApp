@@ -21,10 +21,12 @@ exports.carCreate_post = asyncHandler(async (req, res, next) => {
 
 // READ
 exports.carDetail = asyncHandler(async (req, res, next) => {
-    res.send("carDetail not yet implemented!")
+    const car = await Car.findById(req.params.id).populate("category").exec();
+    res.render("car_detail", {title: "Details about this car", car})
 })
 exports.carsDetail = asyncHandler(async (req, res, next) => {
-    res.send("carsDetail not yet implemented!")
+    const allCars = await Car.find().populate("category").exec();
+    res.render("car_list", {title: "Your cars", cars: allCars})
 })
 
 

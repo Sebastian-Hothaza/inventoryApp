@@ -12,10 +12,13 @@ exports.categoryCreate_post = asyncHandler(async (req, res, next) => {
 
 // READ
 exports.categoryDetail = asyncHandler(async (req, res, next) => {
-    res.send("categoryDetail not yet implemented!")
+    const category = await Category.findById(req.params.id).exec();
+    res.render("category_detail", {title: "Details about this Category", category})
 })
+
 exports.categoriesDetail = asyncHandler(async (req, res, next) => {
-    res.send("categoryDetails not yet implemented!")
+    const allCategories = await Category.find().exec();
+    res.render("category_list", {title: "Categories", categories: allCategories})
 })
 
 // UPDATE
