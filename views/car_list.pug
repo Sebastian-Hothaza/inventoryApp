@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+
+  if cars.length
+    ul
+      each car in cars
+        li
+          a(href=car.url) #{car.year} #{car.make} #{car.model}
+          |  #[a(href=car.category.url) #{car.category.name}]
+        
+          
+  else
+    p There are no cars.
+

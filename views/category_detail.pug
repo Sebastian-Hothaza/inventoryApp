@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+
+  p #[strong Category Name:] #{category.name}
+
+
+  if category.commercial
+    p #[strong Commercial:] YES
+  else
+    p #[strong Commercial:] NO
+
+  p
+    a(href='/categories') Back to Categories
+  p
+    a(href=category.url+'/update') Update Category
+  p
+    a(href=category.url+'/delete') Delete Category

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+
+  p #[strong Year:] #{car.year}
+  p #[strong Make:] #{car.make}
+  p #[strong Model:] #{car.model}
+  p #[strong Category:] 
+    a(href=car.category.url) #{car.category.name}
+
+  p
+    a(href='/cars') Back to Cars
+  p
+    a(href=car.url+'/update') Update Car
+  p
+    a(href=car.url+'/delete') Delete Car
