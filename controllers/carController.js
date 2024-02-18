@@ -125,8 +125,10 @@ exports.carUpdate_post = [
 
 // DELETE
 exports.carDelete_get = asyncHandler(async (req, res, next) => {
-    res.send("carDelete_get not yet implemented!")
+    const car = await Car.findById(req.params.id).exec();
+    res.render("car_delete", {title: "Delete Car", car})
 })
 exports.carDelete_post = asyncHandler(async (req, res, next) => {
-    res.send("carDelete_post not yet implemented!")
+    await Car.findByIdAndDelete(req.params.id);
+    res.redirect('/cars')
 })

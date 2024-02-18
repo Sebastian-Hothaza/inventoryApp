@@ -1,0 +1,9 @@
+extends layout
+
+block content
+
+    h1 #{title}: #{car.year} #{car.make} #{car.model}
+    p Do you really want to delete this Car?
+
+    form(method='POST')
+        button.btn.btn-primary(type='submit') Delete

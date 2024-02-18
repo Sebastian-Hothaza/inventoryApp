@@ -94,8 +94,18 @@ exports.categoryUpdate_post = [
 
 // DELETE
 exports.categoryDelete_get = asyncHandler(async (req, res, next) => {
-    res.send("categoryDelete_get not yet implemented!")
+    const [category, cars] = await Promise.all([Category.findById(req.params.id).exec(), Car.find({category: req.params.id})]);
+    res.render("category_delete", {title: "Delete Category", category, cars})
 })
 exports.categoryDelete_post = asyncHandler(async (req, res, next) => {
-    res.send("categoryDelete_get not yet implemented!")
+    // Need to verify that there are no cars in category
+    const [category, cars] = await Promise.all([Category.findById(req.params.id),Car.find({category: req.params.id})]);
+
+    if (cars.length > 0){
+        //Category has cars in it! Delete should fail
+        res.render("category_delete", {title: "Delete Category", category, cars})
+    }else{
+        await Category.findByIdAndDelete(req.params.id);
+        res.redirect('/categories')
+    }
 })
