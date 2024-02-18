@@ -8,7 +8,7 @@ block content
       each car in cars
         li
           a(href=car.url) #{car.year} #{car.make} #{car.model}
-          |  #[a(href=car.category.url) #{car.category.name}]
+          |  #[a(href=car.category.url) (#{car.category.name})]
         
           
   else
