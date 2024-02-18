@@ -11,6 +11,14 @@ block content
   else
     p #[strong Commercial:] NO
 
+  if cars 
+    p #[strong Cars in this category:]
+    ul 
+      for car in cars 
+        li 
+          a(href=car.url) #{car.year} #{car.make} #{car.model}
+          
+
   p
     a(href='/categories') Back to Categories
   p

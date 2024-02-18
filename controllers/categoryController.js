@@ -1,6 +1,8 @@
 const Category = require('../models/category');
+const Car = require('../models/car');
 
 const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
 
 // CREATE
 exports.categoryCreate_get = asyncHandler(async (req, res, next) => {
@@ -12,8 +14,9 @@ exports.categoryCreate_post = asyncHandler(async (req, res, next) => {
 
 // READ
 exports.categoryDetail = asyncHandler(async (req, res, next) => {
-    const category = await Category.findById(req.params.id).exec();
-    res.render("category_detail", {title: "Details about this Category", category})
+    const [category, cars] = await Promise.all([Category.findById(req.params.id).exec(), Car.find({category: req.params.id})]);
+
+    res.render("category_detail", {title: "Details about this Category", category, cars})
 })
 
 exports.categoriesDetail = asyncHandler(async (req, res, next) => {
